@@ -1643,17 +1643,10 @@
       },
       {
         "current": {
-          "text": [
-            "mx-redis-replica",
-            "mx-redis-master"
-          ],
-          "value": [
-            "mx-redis-replica",
-            "mx-redis-master"
-          ]
+          "text": "mx-redis-master",
+          "value": "mx-redis-master"
         },
         "definition": "label_values(redis_up{namespace=\"$namespace\"},target)",
-        "multi": true,
         "name": "target",
         "options": [],
         "query": {
@@ -1667,12 +1660,8 @@
       },
       {
         "current": {
-          "text": [
-            "rediss://master.p-mexico-valkey-01.24gvfa.mxc1.cache.amazonaws.com:6379"
-          ],
-          "value": [
-            "rediss://master.p-mexico-valkey-01.24gvfa.mxc1.cache.amazonaws.com:6379"
-          ]
+          "text": "rediss://master.p-mexico-valkey-01.24gvfa.mxc1.cache.amazonaws.com:6379",
+          "value": "rediss://master.p-mexico-valkey-01.24gvfa.mxc1.cache.amazonaws.com:6379"
         },
         "datasource": {
           "type": "prometheus",
@@ -1680,7 +1669,6 @@
         },
         "definition": "label_values(redis_up{namespace=~\"$namespace\", target=~\"$target\"},instance)",
         "includeAll": false,
-        "multi": true,
         "name": "instance",
         "options": [],
         "query": {
@@ -1703,5 +1691,5 @@
   "timezone": "browser",
   "title": "Prometheus Redis Exporter",
   "uid": "e008bc3f-81a2-40f9-baf2-a33fd8dec7ec",
-  "version": 1
+  "version": 3
 }
