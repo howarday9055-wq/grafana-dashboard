@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 34,
+  "id": 36,
   "links": [],
   "panels": [
     {
@@ -138,7 +138,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "P5DCFC7561CCDE821"
       },
       "fieldConfig": {
         "defaults": {
@@ -221,10 +221,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "P5DCFC7561CCDE821"
           },
           "editorMode": "code",
-          "expr": "probe_success{instance=~\"$target\"}",
+          "expr": "probe_success{}",
           "format": "time_series",
           "interval": "$interval",
           "intervalFactor": 1,
@@ -1058,21 +1058,6 @@
         "type": "interval"
       },
       {
-        "current": {},
-        "datasource": {
-          "type": "prometheus",
-          "uid": "prometheus"
-        },
-        "includeAll": true,
-        "multi": true,
-        "name": "target",
-        "options": [],
-        "query": "label_values(probe_success, instance)",
-        "refresh": 1,
-        "regex": "",
-        "type": "query"
-      },
-      {
         "current": {
           "text": "p-singapore-eks-01",
           "value": "p-singapore-eks-01"
@@ -1086,6 +1071,26 @@
         "query": {
           "qryType": 1,
           "query": "label_values(probe_success,cluster)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "P5DCFC7561CCDE821"
+        },
+        "definition": "label_values(probe_success{cluster=\"$cluster\"},instance)",
+        "includeAll": true,
+        "multi": true,
+        "name": "target",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(probe_success{cluster=\"$cluster\"},instance)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
