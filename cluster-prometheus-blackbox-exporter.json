@@ -18,13 +18,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 36,
+  "id": 38,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "P5DCFC7561CCDE821"
       },
       "fieldConfig": {
         "defaults": {
@@ -108,7 +108,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "P5DCFC7561CCDE821"
           },
           "expr": "probe_duration_seconds{instance=~\"$target\"}",
           "format": "time_series",
@@ -223,12 +223,10 @@
             "type": "prometheus",
             "uid": "P5DCFC7561CCDE821"
           },
-          "editorMode": "code",
-          "expr": "probe_success{}",
+          "expr": "probe_success{instance=~\"$target\"}",
           "format": "time_series",
           "interval": "$interval",
           "intervalFactor": 1,
-          "range": true,
           "refId": "A"
         }
       ],
@@ -238,7 +236,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "P5DCFC7561CCDE821"
       },
       "fieldConfig": {
         "defaults": {
@@ -322,7 +320,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "P5DCFC7561CCDE821"
           },
           "expr": "probe_http_duration_seconds{instance=~\"$target\"}",
           "format": "time_series",
@@ -338,7 +336,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "P5DCFC7561CCDE821"
       },
       "fieldConfig": {
         "defaults": {
@@ -422,7 +420,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "P5DCFC7561CCDE821"
           },
           "expr": "probe_duration_seconds{instance=~\"$target\"}",
           "format": "time_series",
@@ -438,7 +436,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "P5DCFC7561CCDE821"
       },
       "fieldConfig": {
         "defaults": {
@@ -522,7 +520,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "P5DCFC7561CCDE821"
           },
           "expr": "probe_http_status_code{instance=~\"$target\"}",
           "format": "time_series",
@@ -537,7 +535,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "P5DCFC7561CCDE821"
       },
       "fieldConfig": {
         "defaults": {
@@ -599,7 +597,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "P5DCFC7561CCDE821"
           },
           "expr": "probe_http_version{instance=~\"$target\"}",
           "format": "time_series",
@@ -613,7 +611,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "P5DCFC7561CCDE821"
       },
       "fieldConfig": {
         "defaults": {
@@ -696,7 +694,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "P5DCFC7561CCDE821"
           },
           "expr": "probe_http_ssl{instance=~\"$target\"}",
           "format": "time_series",
@@ -711,7 +709,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "P5DCFC7561CCDE821"
       },
       "fieldConfig": {
         "defaults": {
@@ -795,7 +793,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "P5DCFC7561CCDE821"
           },
           "expr": "probe_ssl_earliest_cert_expiry{instance=~\"$target\"} - time()",
           "format": "time_series",
@@ -810,7 +808,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "P5DCFC7561CCDE821"
       },
       "fieldConfig": {
         "defaults": {
@@ -872,7 +870,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "P5DCFC7561CCDE821"
           },
           "expr": "avg(probe_duration_seconds{instance=~\"$target\"})",
           "format": "time_series",
@@ -887,7 +885,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "prometheus"
+        "uid": "P5DCFC7561CCDE821"
       },
       "fieldConfig": {
         "defaults": {
@@ -949,7 +947,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "prometheus"
+            "uid": "P5DCFC7561CCDE821"
           },
           "expr": "avg(probe_dns_lookup_time_seconds{instance=~\"$target\"})",
           "format": "time_series",
@@ -1059,13 +1057,11 @@
       },
       {
         "current": {
-          "text": "p-singapore-eks-01",
-          "value": "p-singapore-eks-01"
+          "text": "p-saopaulo-eks-01",
+          "value": "p-saopaulo-eks-01"
         },
         "definition": "label_values(probe_success,cluster)",
-        "description": "",
-        "includeAll": true,
-        "label": "Cluser",
+        "label": "Cluster",
         "name": "cluster",
         "options": [],
         "query": {
