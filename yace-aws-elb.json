@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 73,
+  "id": 53,
   "links": [],
   "panels": [
     {
@@ -104,7 +104,7 @@
           "refId": "A"
         }
       ],
-      "title": "Active Flow Count",
+      "title": "Active Flow Count (Average, 1m)",
       "type": "stat"
     },
     {
@@ -171,7 +171,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(aws_networkelb_new_flow_count_sum{region=~\"$region\",dimension_LoadBalancer=~\"$loadbalancer\"}[5m]) * 60",
+          "expr": "aws_networkelb_new_flow_count_sum{region=~\"$region\",dimension_LoadBalancer=~\"$loadbalancer\"}",
           "range": true,
           "refId": "A"
         }
@@ -242,7 +242,7 @@
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "aws_networkelb_healthy_host_count_average{region=~\"$region\",dimension_LoadBalancer=~\"$loadbalancer\",dimension_TargetGroup=~\"$targetgroup\"}",
+          "expr": "aws_networkelb_healthy_host_count_minimum{region=~\"$region\",dimension_LoadBalancer=~\"$loadbalancer\",dimension_TargetGroup=~\"$targetgroup\"}",
           "format": "time_series",
           "instant": false,
           "legendFormat": "{{dimension_TargetGroup}}",
@@ -538,7 +538,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(aws_networkelb_new_flow_count_sum{region=~\"$region\",dimension_LoadBalancer=~\"$loadbalancer\"}[5m]) * 60",
+          "expr": "aws_networkelb_new_flow_count_sum{region=~\"$region\",dimension_LoadBalancer=~\"$loadbalancer\"}",
           "legendFormat": "{{dimension_LoadBalancer}}",
           "range": true,
           "refId": "A"
@@ -907,7 +907,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(aws_networkelb_tcp_client_reset_count_sum{region=~\"$region\",dimension_LoadBalancer=~\"$loadbalancer\"}[5m]) * 60",
+          "expr": "aws_networkelb_tcp_client_reset_count_sum{region=~\"$region\",dimension_LoadBalancer=~\"$loadbalancer\"}",
           "legendFormat": "{{dimension_LoadBalancer}} - Client Reset",
           "range": true,
           "refId": "A"
@@ -1072,7 +1072,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "aws_networkelb_healthy_host_count_average{region=~\"$region\",dimension_LoadBalancer=~\"$loadbalancer\",dimension_TargetGroup=~\"$targetgroup\"}",
+          "expr": "aws_networkelb_healthy_host_count_minimum{region=~\"$region\",dimension_LoadBalancer=~\"$loadbalancer\",dimension_TargetGroup=~\"$targetgroup\"}",
           "legendFormat": "{{dimension_TargetGroup}} - Health",
           "range": true,
           "refId": "A"
@@ -1083,7 +1083,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "aws_networkelb_un_healthy_host_count_average{region=~\"$region\",dimension_LoadBalancer=~\"$loadbalancer\",dimension_TargetGroup=~\"$targetgroup\"}",
+          "expr": "aws_networkelb_un_healthy_host_count_maximum{region=~\"$region\",dimension_LoadBalancer=~\"$loadbalancer\",dimension_TargetGroup=~\"$targetgroup\"}",
           "legendFormat": "{{dimension_TargetGroup}} - Unhealth",
           "range": true,
           "refId": "B"
