@@ -18,7 +18,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 1,
-  "id": 0,
+  "id": 97,
   "links": [
     {
       "asDropdown": false,
@@ -67,7 +67,8 @@
     },
     {
       "datasource": {
-        "uid": "$datasource"
+        "type": "prometheus",
+        "uid": "prometheus"
       },
       "description": "**Uptime**\n\nThe amount of time since the last restart of the MySQL server process.",
       "fieldConfig": {
@@ -131,7 +132,8 @@
         {
           "calculatedInterval": "10m",
           "datasource": {
-            "uid": "$datasource"
+            "type": "prometheus",
+            "uid": "prometheus"
           },
           "datasourceErrors": {},
           "errors": {},
@@ -4069,15 +4071,16 @@
       },
       {
         "current": {
-          "text": "All",
+          "text": [
+            "prometheus-mysql-exporter"
+          ],
           "value": [
-            "$__all"
+            "prometheus-mysql-exporter"
           ]
         },
         "datasource": "$datasource",
         "definition": "label_values(mysql_up, job)",
-        "includeAll": true,
-        "multi": true,
+        "includeAll": false,
         "name": "job",
         "options": [],
         "query": "label_values(mysql_up, job)",
@@ -4087,20 +4090,41 @@
       },
       {
         "current": {
-          "text": [
-            "mexico-rds-1.cnea0m24qyg6.mx-central-1.rds.amazonaws.com"
-          ],
-          "value": [
-            "mexico-rds-1.cnea0m24qyg6.mx-central-1.rds.amazonaws.com"
-          ]
+          "text": "mexico-rds-1.cnea0m24qyg6.mx-central-1.rds.amazonaws.com",
+          "value": "mexico-rds-1.cnea0m24qyg6.mx-central-1.rds.amazonaws.com"
         },
         "datasource": "$datasource",
-        "definition": "label_values(mysql_up, instance)",
-        "includeAll": true,
-        "multi": true,
+        "definition": "label_values(mysql_up{job=\"$job\"},instance)",
+        "includeAll": false,
         "name": "instance",
         "options": [],
-        "query": "label_values(mysql_up, instance)",
+        "query": {
+          "qryType": 1,
+          "query": "label_values(mysql_up{job=\"$job\"},instance)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "mx-mysql-01",
+          "value": "mx-mysql-01"
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "definition": "label_values(mysql_up{job=\"$job\", instance=\"$instance\"},target)",
+        "label": "Target",
+        "name": "target",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(mysql_up{job=\"$job\", instance=\"$instance\"},target)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
         "refresh": 1,
         "regex": "",
         "type": "query"
@@ -4127,5 +4151,5 @@
   "timezone": "",
   "title": "Prometheus MySQL Exporter",
   "uid": "549c2bf8936f7767ea6ac47c47b00f2a",
-  "version": 12
+  "version": 1
 }

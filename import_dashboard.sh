@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ ${#@} -ne 2 ]];then
-    echo "Usage: bash $0 configmap_name file_name"
+    echo "Usage: bash $0 <configmap_name> <file_name>"
     exit 1
 fi
 cm_name=$1
