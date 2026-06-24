@@ -19,7 +19,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 61,
+  "id": 87,
   "links": [],
   "panels": [
     {
@@ -101,7 +101,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "max(etcd_server_has_leader{cluster=~\"$cluster\"})",
+          "expr": "max(etcd_server_has_leader{cluster=~\"$cluster\", instance=~\"$instance\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "range": true,
@@ -180,7 +180,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "max(etcd_server_leader_changes_seen_total{cluster=~\"$cluster\"})",
+          "expr": "max(etcd_server_leader_changes_seen_total{cluster=~\"$cluster\", instance=~\"$instance\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "range": true,
@@ -259,7 +259,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "max(etcd_server_leader_changes_seen_total{cluster=~\"$cluster\"})",
+          "expr": "max(etcd_server_leader_changes_seen_total{cluster=~\"$cluster\", instance=~\"$instance\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "range": true,
@@ -360,7 +360,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(grpc_server_started_total{grpc_type=\"unary\", cluster=~\"$cluster\"}[5m]))",
+          "expr": "sum(rate(grpc_server_started_total{grpc_type=\"unary\", cluster=~\"$cluster\", instance=~\"$instance\"}[5m]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "RPC Rate",
@@ -478,7 +478,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(grpc_server_started_total{grpc_service=\"etcdserverpb.Watch\",grpc_type=\"bidi_stream\", cluster=~\"$cluster\"}) - sum(grpc_server_handled_total{grpc_service=\"etcdserverpb.Watch\",grpc_type=\"bidi_stream\", cluster=~\"$cluster\"})",
+          "expr": "sum(grpc_server_started_total{grpc_service=\"etcdserverpb.Watch\",grpc_type=\"bidi_stream\", cluster=~\"$cluster\", instance=~\"$instance\"}) - sum(grpc_server_handled_total{grpc_service=\"etcdserverpb.Watch\",grpc_type=\"bidi_stream\", cluster=~\"$cluster\", instance=~\"$instance\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Watch Streams",
@@ -596,7 +596,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "etcd_mvcc_db_total_size_in_use_in_bytes{cluster=~\"$cluster\"}",
+          "expr": "etcd_mvcc_db_total_size_in_use_in_bytes{cluster=~\"$cluster\", instance=~\"$instance\"}",
           "format": "time_series",
           "hide": false,
           "interval": "",
@@ -701,7 +701,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "histogram_quantile(0.99, sum(rate(etcd_disk_wal_fsync_duration_seconds_bucket{cluster=~\"$cluster\"}[5m])) by (instance, le))",
+          "expr": "histogram_quantile(0.99, sum(rate(etcd_disk_wal_fsync_duration_seconds_bucket{cluster=~\"$cluster\", instance=~\"$instance\"}[5m])) by (instance, le))",
           "format": "time_series",
           "hide": false,
           "intervalFactor": 2,
@@ -820,7 +820,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "process_resident_memory_bytes{cluster=~\"$cluster\", pod=~\"$pod\"}",
+          "expr": "process_resident_memory_bytes{cluster=~\"$cluster\", instance=~\"$instance\"}",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{instance}} Resident Memory",
@@ -923,7 +923,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(etcd_network_client_grpc_received_bytes_total{cluster=~\"$cluster\"}[5m])",
+          "expr": "rate(etcd_network_client_grpc_received_bytes_total{cluster=~\"$cluster\", instance=~\"$instance\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{instance}} Client Traffic In",
@@ -1026,7 +1026,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "rate(etcd_network_client_grpc_sent_bytes_total{cluster=~\"$cluster\"}[5m])",
+          "expr": "rate(etcd_network_client_grpc_sent_bytes_total{cluster=~\"$cluster\", instance=~\"$instance\"}[5m])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{instance}} Client Traffic Out",
@@ -1337,7 +1337,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(etcd_server_proposals_failed_total{cluster=~\"$cluster\"}[5m]))",
+          "expr": "sum(rate(etcd_server_proposals_failed_total{cluster=~\"$cluster\", instance=~\"$instance\"}[5m]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Proposal Failure Rate",
@@ -1478,7 +1478,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "changes(etcd_server_leader_changes_seen_total{cluster=~\"$cluster\"}[1d])",
+          "expr": "changes(etcd_server_leader_changes_seen_total{cluster=~\"$cluster\", instance=~\"$instance\"}[1d])",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "{{instance}} Total Leader Elections Per Day",
@@ -1586,7 +1586,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(etcd_server_proposals_committed_total{cluster=~\"$cluster\"}[5m]))",
+          "expr": "sum(rate(etcd_server_proposals_committed_total{cluster=~\"$cluster\", instance=~\"$instance\"}[5m]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "total number of consensus proposals committed",
@@ -1705,7 +1705,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(etcd_server_proposals_pending{cluster=~\"$cluster\"})",
+          "expr": "sum(etcd_server_proposals_pending{cluster=~\"$cluster\", instance=~\"$instance\"})",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "Proposals pending",
@@ -1807,7 +1807,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(etcd_disk_wal_fsync_duration_seconds_sum{cluster=~\"$cluster\"}[1m]))",
+          "expr": "sum(rate(etcd_disk_wal_fsync_duration_seconds_sum{cluster=~\"$cluster\", instance=~\"$instance\"}[1m]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "\tThe latency distributions of fsync called by wal",
@@ -1921,7 +1921,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(etcd_network_client_grpc_received_bytes_total{cluster=~\"$cluster\"}[1m]))",
+          "expr": "sum(rate(etcd_network_client_grpc_received_bytes_total{cluster=~\"$cluster\", instance=~\"$instance\"}[1m]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "The total number of bytes received by grpc clients",
@@ -2036,7 +2036,7 @@
             "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "sum(rate(etcd_debugging_snap_save_total_duration_seconds_sum{cluster=~\"$cluster\"}[1m]))",
+          "expr": "sum(rate(etcd_debugging_snap_save_total_duration_seconds_sum{cluster=~\"$cluster\", instance=~\"$instance\"}[1m]))",
           "format": "time_series",
           "intervalFactor": 2,
           "legendFormat": "The total latency distributions of save called by snapshot",
@@ -2092,26 +2092,16 @@
       },
       {
         "current": {
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "text": "172.10.46.11:8080",
+          "value": "172.10.46.11:8080"
         },
-        "datasource": {
-          "type": "prometheus",
-          "uid": "${datasource}"
-        },
-        "definition": "label_values(etcd_cluster_version{cluster=\"$cluster\"},pod)",
-        "includeAll": true,
-        "label": "Pod",
-        "multi": true,
-        "name": "pod",
+        "definition": "label_values(etcd_cluster_version{cluster=\"$cluster\"},instance)",
+        "label": "Instance",
+        "name": "instance",
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(etcd_cluster_version{cluster=\"$cluster\"},pod)",
+          "query": "label_values(etcd_cluster_version{cluster=\"$cluster\"},instance)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -2120,26 +2110,21 @@
       },
       {
         "current": {
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": {
           "type": "prometheus",
-          "uid": "${datasource}"
+          "uid": "prometheus"
         },
-        "definition": "label_values(etcd_cluster_version{cluster=\"$cluster\", pod=~\"$pod\"},node)",
-        "includeAll": true,
+        "definition": "label_values(etcd_cluster_version{cluster=\"$cluster\", instance=\"$instance\"},node)",
+        "includeAll": false,
         "label": "Node",
-        "multi": true,
         "name": "node",
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(etcd_cluster_version{cluster=\"$cluster\", pod=~\"$pod\"},node)",
+          "query": "label_values(etcd_cluster_version{cluster=\"$cluster\", instance=\"$instance\"},node)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -2149,7 +2134,7 @@
     ]
   },
   "time": {
-    "from": "now-6h",
+    "from": "now-30m",
     "to": "now"
   },
   "timepicker": {},
