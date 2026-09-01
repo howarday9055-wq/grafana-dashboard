@@ -1,6 +1,6 @@
 #!/bin/bash
 
-configmaps=$(kubectl get configmaps -n monitoring | grep grafana-dashboard)
+configmaps=$(kubectl get configmaps -n monitoring | grep dashboard)
 if [[ ${#@} -ne 1 ]];then
     echo "Usage: bash $0 <configmap_name>"
     echo -e "Choices: \n$configmaps"
